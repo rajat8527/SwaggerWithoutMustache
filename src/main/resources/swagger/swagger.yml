@@ -1,0 +1,56 @@
+swagger: "2.0"
+info:
+  description: "Demo For Swagger Codegen Without Mustache"
+  version: "1.0.0"
+  title: "Acko"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+  - name: "product"
+    description: "Product Related Endpoints"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /product/getAllProducts:
+    get:
+      tags:
+        - "product"
+      summary: "Returns a list of products"
+      operationId: "getAllProducts"
+      produces:
+        - "application/xml"
+        - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        400:
+          description: "Invalid status value"
+definitions:
+  Product:
+    type: "object"
+    properties:
+      productId:
+        type: "string"
+        example: "1"
+      productName:
+        type: "string"
+        example: "ABC"
+      productPrice:
+        type: "integer"
+        example: 100
+    xml:
+      name: "Product"
